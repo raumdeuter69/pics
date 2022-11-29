@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import SearchBar from './SearchBar';
+import ImageList from './ImageList';
 
 class  App extends React.Component<any,any> {
   state={images:[]}
@@ -14,14 +15,14 @@ query: term
   }
 
   })
-  console.log(this)
-  this.setState({images:response.data.results}); 
+  this.setState({images:response.data.results});
+  console.log(response)
 };
   render(){
   return (
     <div className="ui container" style={{marginTop :'10 px'}}>
-     <SearchBar onSubmit={this.onSearchSubmit} />
-     Found : {this.state.images.length} images
+     <SearchBar onSubmit={this.onSearchSubmit} /> 
+     <ImageList images={this.state.images}/>
     </div>
   );
 }
